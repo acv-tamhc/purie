@@ -1,4 +1,7 @@
-h1 
+h1
 	| Home#index
-p
-	| Find me in app/views/home/index.html.slim
+
+- @results.each do |item|
+	| p #{item.get('ASIN')}
+	
+	| p #{item.get('ItemAttributes/ProductGroup')}

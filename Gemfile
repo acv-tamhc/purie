@@ -62,4 +62,3 @@ gem 'simple_form'
 gem 'country_select'
 gem 'amazon-ecs'
 gem 'paperclip', '~> 5.0.0'
-

@@ -20,4 +20,5 @@
 /node_modules
 /yarn-error.log
 
+/app/assets/bower_components/
 .byebug_history

@@ -1,5 +1,7 @@
 {
   "name": "purie",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "sass-sandal": "^3.4.1"
+  }
 }

@@ -38,11 +38,16 @@ html
             li.menu-item
               a
                 | Home
-
+            li.menu-item
+              a
+                | Introduction
             li.menu-item
               a
                 | All products
 
+            li.menu-item
+              a
+                | Services
             li.menu-item
               a
                 | Books
@@ -66,10 +71,26 @@ html
 
 
       .footer
-        .footer-address
-          p
-            | Amazon associates
-          p
-            | Address: Your address here
-          p
-            | Phone: 0123456789
+        .wrapper
+          .footer-address
+            .footer-address-logo
+              a> href =home_index_path()
+                = image_tag 'logo.png'
+            .footer-address-content
+              p
+                | Amazon associates
+              p
+                | Address: Your address here
+              p
+                | Phone: 0123456789
+
+          .footer-social
+            a> href ='#'
+              span
+                i.fa.fa-facebook
+            a> href ='#'
+              span
+                i.fa.fa-twitter
+            a> href ='#'
+              span
+                i.fa.fa-google-pluss

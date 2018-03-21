@@ -16,5 +16,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "Scut": "scut#^1.4.0",
+    "breakpoint-sass": "^2.7.1"
+  }
 }

@@ -1,7 +1,9 @@
 @import '../../assets/bower_components/bemify/sass/bemify'
 @import '../../assets/bower_components/sass-flex-mixin/flex'
 @import '../../assets/bower_components/sass-mixins/mixins'
-
+@import 'bootstrap-sprockets'
+@import 'bootstrap'
+@import '../inc/_mixins'
 @import 'global'
 
 .wrapper
@@ -9,7 +11,7 @@
   max-width: 980px
 
 .menu-top
-  background: #000
+  background: #405157
   ul.list_menu_top
     text-align: right
     li
@@ -22,15 +24,152 @@
         line-height: 1.5
         text-decoration: none
         cursor: pointer
-        border: 1px solid #000
+        display: block
+        position: relative
+        &:after
+          content: ''
+          display: block
+          width: 1px
+          background: rgba(255, 255, 255, .6)
+          height: 100%
+          position: absolute
+          top: 0
+          right: 0
         &:hover
-          background: #fff
-          color: #000
-          border-color: #ccc
+          opacity: .4
           +transition(ease-in-out 500ms)
 
 .header
-  padding: 10px 0
-  background: lightblue
+  padding: 15px 0
+  background: #fff
   .logo
-    max-width: 200px
+    max-width: 300px
+
+.main-menu
+  background: lightblue
+  ul.list_none
+    li
+      display: inline-block
+      a
+        color: #fff
+        display: inline-block
+        text-decoration: none
+        text-transform: uppercase
+        cursor: pointer
+        padding: 15px 36px
+        font-size: 14px
+        display: block
+        position: relative
+        border-bottom: 1px solid lightblue
+        border-top: 1px solid lightblue
+
+        &:hover
+          background: #fff
+          color: lightblue
+          +transition(ease-in-out 500ms)
+
+.footer
+  margin-top: 40px
+  padding-top: 20px
+  padding-bottom: 20px
+  position: relative
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    height: 1px
+    width: 100%
+    background: lightblue
+    top: 0
+    left: 0
+    right: 0
+    margin: 0 auto
+
+  .footer-address-logo
+    a
+      max-width: 300px
+      display: block
+
+  .footer-address-content
+    pading-top: 10px
+    p
+      padding-bottom: 5px
+
+
+
+.box-product
+  .box-title
+    text-align: center
+  .box-content
+    ul.list_item
+      &:after
+        content: ''
+        display: block
+        clear: both
+      li.item
+        float: left
+        width: 25%
+
+        .item-img
+          position: relative
+          padding: 5px
+          border: 1px solid transparent
+          overflow: hidden
+
+          &:after
+            content: ''
+            display: block
+            height: 100%
+            width: 100%
+            background: rgba(0, 0, 0, .5)
+            position: absolute
+            top: 0
+            left: 0
+            z-index: 1
+            opacity: 0
+            visibility: hidden
+            border: 1px solid  lightblue
+            +transition(ease-in-out 500ms)
+
+          &:hover:after
+            visibility: visible
+            opacity: 1
+            +transition(ease-in-out 500ms)
+
+          a
+            display: block
+            position: relative
+            padding-top: 100%
+            font-family: 'Font Awesome 5 Free'
+            &:before, &:after
+              content: ''
+              display: block
+              position: absolute
+              top: 45%
+              +transition(ease-in-out 500ms)
+              color: #fff
+              border: 1px solid #fff
+              z-index: 20
+              font-size: 16px
+              padding: 5px
+            &:before
+              left: -100%
+              content: '\f004'
+            &:after
+              right: -100%
+              content: '\f07a'
+            &:hover:before
+              left: 30%
+              +transition(ease-in-out 500ms)
+            &:hover:after
+              right: 30%
+              +transition(ease-in-out 500ms)
+            img
+              position: absolute
+              top: 50%
+              left: 50%
+              +transform(translate(-50%, -50%))
+              +transition(ease-in-out 500ms)
+              max-width: 100%
+              max-height: 100%
+              z-index: 2

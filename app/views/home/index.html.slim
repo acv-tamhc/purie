@@ -1,0 +1,7 @@
+h1
+	| Home#index
+
+- @results.each do |item|
+	| p #{item.get('ASIN')}
+	
+	| p #{item.get('ItemAttributes/ProductGroup')}

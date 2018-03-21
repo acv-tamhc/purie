@@ -1,0 +1,75 @@
+doctype html
+html
+  head
+    title
+    	| Purie Home
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+  body
+    .page-wrapper
+      .menu-top
+        .wrapper
+          ul.list_menu_top.list_none
+            li.menu-item
+              a
+                | Support
+            li.menu-item
+              a
+                | Map
+            li.menu-item
+              a
+                | Hot
+            li.menu-item
+              a
+                | Promotion
+
+      .header
+        .wrapper
+          .logo
+            a> href =home_index_path()
+              = image_tag 'logo.png'
+
+      .main-menu
+        .wrapper
+          ul.list_menu.list_none
+            li.menu-item
+              a
+                | Home
+
+            li.menu-item
+              a
+                | All products
+
+            li.menu-item
+              a
+                | Books
+
+            li.menu-item
+              a
+                | News
+
+            li.menu-item
+              a
+                | Contact
+
+
+      .page-content
+      	.wrapper
+          .notice
+      		  = notice
+          .alert
+      		  = alert
+          = yield
+
+
+      .footer
+        .footer-address
+          p
+            | Amazon associates
+          p
+            | Address: Your address here
+          p
+            | Phone: 0123456789

@@ -1,0 +1,36 @@
+@import '../../assets/bower_components/bemify/sass/bemify'
+@import '../../assets/bower_components/sass-flex-mixin/flex'
+@import '../../assets/bower_components/sass-mixins/mixins'
+
+@import 'global'
+
+.wrapper
+  margin: 0 auto
+  max-width: 980px
+
+.menu-top
+  background: #000
+  ul.list_menu_top
+    text-align: right
+    li
+      display: inline-block
+      a
+        display: inline-block
+        color: #fff
+        padding: 5px 10px
+        font-size: 12px
+        line-height: 1.5
+        text-decoration: none
+        cursor: pointer
+        border: 1px solid #000
+        &:hover
+          background: #fff
+          color: #000
+          border-color: #ccc
+          +transition(ease-in-out 500ms)
+
+.header
+  padding: 10px 0
+  background: lightblue
+  .logo
+    max-width: 200px

@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  get 'home/index'
+  root to: 'home#index'
+  get 'products/:title', to: 'products#show'
 end

@@ -1,9 +1,9 @@
 class CreateProducts < ActiveRecord::Migration[5.1]
-  def change
+  def up
     create_table :products do |t|
-    	t.integer :item_id
+    	t.integer   :item_id
     	t.string 	:group_nav
-    	t.integer :group_id
+    	t.integer   :group_id
     	t.string	:item_related
     	t.string	:item_code
     	t.string	:picture
@@ -24,5 +24,8 @@ class CreateProducts < ActiveRecord::Migration[5.1]
     	t.string	:lang
     	t.timestamps
     end
+  end
+  def down
+    drop_table :products
   end
 end

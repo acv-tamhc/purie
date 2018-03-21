@@ -1,0 +1,20 @@
+{
+  "name": "Purie",
+  "homepage": "https://github.com/acv-tamhc/purie",
+  "authors": [
+    "acv-tamhc <acv-tamhc@atmarkcafe.org>"
+  ],
+  "description": "This is sample e commerce website",
+  "main": "",
+  "keywords": [
+    "Purie"
+  ],
+  "license": "tamhuynh",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

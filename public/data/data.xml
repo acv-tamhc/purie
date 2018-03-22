@@ -1,4 +1,0 @@
-<THING1:things type="Container">
-  <PART1:Id type="Property">1234</PART1:Id>
-  <PART1:Name type="Property">The Name</PART1:Name>
-</THING1:things>

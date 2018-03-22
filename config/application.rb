@@ -7,8 +7,6 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 require 'awesome_print'
-require 'amazon/ecs'
-require 'nokogiri'
 require 'xmlsimple'
 
 # get product
@@ -28,11 +26,6 @@ ENDPOINT = "webservices.amazon.com"
 
 REQUEST_URI = "/onca/xml"
 
-Amazon::Ecs.configure do |options|
-  options[:AWS_access_key_id] = 'AKIAJWPWTVNYFLW7EKHQ'
-  options[:AWS_secret_key] = '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'
-  options[:associate_tag] = 'phuongvyshop-20'
-end
 
 
 module Purie

@@ -6,7 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require 'awesome_print'
 require 'amazon/ecs'
+require 'nokogiri'
 
 Amazon::Ecs.configure do |options|
   options[:AWS_access_key_id] = 'AKIAJWPWTVNYFLW7EKHQ'

@@ -1,78 +1,20 @@
-h1
-	| Home#index
-
-- @results.each do |item|
-	| p #{item.get('ASIN')}
-
-	| p #{item.get('ItemAttributes/ProductGroup')}
-
 .box.box-product
 	.box-title
 		h3
 			| Promotion product
 
 	.box-content
+		- if @results.empty?
 		ul.list_item.list_none
-			li.item
-				.item-img
-					a> href='#'
-						=image_tag 'logo.png'
-
-				.item-title
-					span
-						| Product title title product title
-
-				.item-price
-					span
-						| 123
-				.item-action
-					a.buy-now
-						| Buy now
-
-			li.item
-				.item-img
-					a> href='#'
-						=image_tag 'logo.png'
-
-				.item-title
-					span
-						| Product title title product title
-
-				.item-price
-					span
-						| 123
-				.item-action
-					a.buy-now
-						| Buy now
-
-			li.item
-				.item-img
-					a> href='#'
-						=image_tag 'logo.png'
-
-				.item-title
-					span
-						| Product title title product title
-
-				.item-price
-					span
-						| 123
-				.item-action
-					a.buy-now
-						| Buy now
-
-			li.item
-				.item-img.img
-					a> href='#'
-						=image_tag 'logo.png'
-
-				.item-title
-					span
-						| Product title title product title
-
-				.item-price
-					span
-						| 123
-				.item-action
-					a.buy-now
-						| Buy now
+			- @results.each do |item|
+				- img = item.get_hash('LargeImage')
+				| <li class='item'>
+				|		<div class='item-img'>
+				|			<a href="#">
+				|  			<img src="#{item.get_hash('LargeImage')['URL']}" />
+				|			</a>
+				|		</div>
+				| <p>#{item.get('ItemAttributes/Title')}</p>
+				- attribute = item.get_element('ItemAttributes')
+				- attribute.get('Author')
+				| </li>

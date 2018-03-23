@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use mysql2 as the database for Active Record
-gem 'mysql2'
+gem 'mysql2', '~>0.4.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -60,6 +60,9 @@ gem 'activeadmin'
 gem 'devise'
 gem 'simple_form'
 gem 'country_select'
-gem 'amazon-ecs'
 gem 'paperclip', '~> 5.2.0'
 gem 'font-awesome-sass', '~> 5.0.6'
+gem 'pry-byebug'
+gem 'awesome_print'
+gem 'nokogiri'
+gem 'xml-simple'

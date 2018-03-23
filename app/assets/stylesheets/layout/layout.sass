@@ -1,9 +1,11 @@
 @import '../../assets/bower_components/bemify/sass/bemify'
 @import '../../assets/bower_components/sass-flex-mixin/flex'
 @import '../../assets/bower_components/sass-mixins/mixins'
+@import '../../assets/bower_components/Buttons/scss/buttons'
 @import 'bootstrap-sprockets'
 @import 'bootstrap'
 @import '../inc/_mixins'
+@import 'variables'
 @import 'global'
 
 .wrapper
@@ -11,7 +13,7 @@
   max-width: 980px
 
 .menu-top
-  background: #405157
+  background: $bg_menu_top
   ul.list_menu_top
     text-align: right
     li
@@ -46,7 +48,7 @@
     max-width: 300px
 
 .main-menu
-  background: lightblue
+  background: $bg_main_menu
   ul.list_none
     li
       display: inline-block
@@ -60,12 +62,12 @@
         font-size: 14px
         display: block
         position: relative
-        border-bottom: 1px solid lightblue
-        border-top: 1px solid lightblue
+        border-bottom: 1px solid $bg_main_menu
+        border-top: 1px solid $bg_main_menu
 
         &:hover
           background: #fff
-          color: lightblue
+          color: $bg_main_menu
           +transition(ease-in-out 500ms)
 
 .footer
@@ -100,6 +102,11 @@
 .box-product
   .box-title
     text-align: center
+    border-bottom: 1px solid #000
+    display: table
+    margin: 0 auto 20px
+    text-transform: uppercase
+
   .box-content
     ul.list_item
       &:after
@@ -109,6 +116,9 @@
       li.item
         float: left
         width: 25%
+        padding: 15px 10px
+        &:nth-child(4n + 1)
+          clear: both
 
         .item-img
           position: relative
@@ -121,7 +131,7 @@
             display: block
             height: 100%
             width: 100%
-            background: rgba(0, 0, 0, .5)
+            background: rgba(0, 0, 0, .1)
             position: absolute
             top: 0
             left: 0
@@ -133,7 +143,7 @@
 
           &:hover:after
             visibility: visible
-            opacity: 1
+            opacity: .8
             +transition(ease-in-out 500ms)
 
           a
@@ -173,3 +183,34 @@
               max-width: 100%
               max-height: 100%
               z-index: 2
+        .item-title
+          font-size: 14px
+          line-height: 1.2
+          max-heigth: 40px
+          overflow: hidden
+          padding: 5px 0
+        .item-price
+          font-size: 14px
+          line-height: 1.2
+          text-align: center
+          color: red
+          padding: 5px 0
+        .item-action
+          padding: 0 5px
+          a.buy-now
+            display: block
+            text-decoration: none
+            padding: 5px 0
+            width: 100%
+            color: #fff
+            cursor: pointer
+            border-radius: 5px
+            text-align: center
+            text-transform: uppercase
+            background-color: $bg_buy
+            border: 1px solid $bg_buy
+            +transition(ease-in-out 500ms)
+            &:hover
+              color: $bg_buy
+              background-color: #fff
+              +transition(ease-in-out 500ms)

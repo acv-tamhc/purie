@@ -56,6 +56,7 @@ Category.all.each do |cat|
       p.item_code = i["ASIN"]
       p.picture = i["LargeImage"]["URL"]
       p.title = i["ItemAttributes"]["Title"]
+      p.description = i["ItemAttributes"]["Title"] + ' description'
       p.price = 299.99
       p.price = i["ItemAttributes"]["ListPrice"]["Amount"].to_f if i["ItemAttributes"].key?('ListPrice')
       p.category_id = cat.id

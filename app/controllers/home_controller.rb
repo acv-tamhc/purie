@@ -1,37 +1,13 @@
 class HomeController < ApplicationController
   def index
-    # res = Amazon::Ecs.item_search('com', {:response_group => 'Medium', :sort => 'salesrank'})
-    # @results = res.items
-    # rs = []
-    #
-    # item_price = ''
-    # res.items.each do |item|
-    #
-    #   product = {}
-    #   product[:title] = item.get('ItemAttributes/Title')
-    #   product[:picture] = item.get_hash('LargeImage')['URL']
-    #   product[:item_code] = item.get('ASIN')
-    #   item_price = Amazon::Ecs.item_search({"Service" => 'AWSECommerceService', "ResponseGroup" => 'Offers', "Operation" => 'ItemLookup', "IdType" => 'ASIN', "ItemId" =>item.get('ASIN') })
-    #   # rs_price = item_price->get_hash('Amount')
-    #
-    #   rs.push(product)
-    # end
-    # #ap item_price
-    # item_price = item_price.first_item
-    # ap item_price.get_hash()
-    # puts 'zzzz'
-    # ap rs
-  end
-
-  def read_xml
     # link document: http://webservices.amazon.com/scratchpad/index.html#http://webservices.amazon.com/onca/xml?Service=AWSECommerceService&Operation=ItemLookup&SubscriptionId=AKIAJWPWTVNYFLW7EKHQ&AssociateTag=phuongvyshop-20&ItemId=0062457713&IdType=ASIN&ResponseGroup=ItemIds,Offers,OfferSummary
     params = {
       "Service" => "AWSECommerceService",
-      "Operation" => "ItemLookup",
+      "Operation" => "ItemSearch",
       "AWSAccessKeyId" => "AKIAJWPWTVNYFLW7EKHQ",
       "AssociateTag" => "phuongvyshop-20",
-      "ItemId" => "0062457713",
-      "IdType" => "ASIN",
+      "SearchIndex" => "All",
+      "Keywords" => "a",
       "ResponseGroup" => "Images,ItemAttributes,Offers"
     }
 
@@ -54,6 +30,8 @@ class HomeController < ApplicationController
 
     #puts "Signed URL: \"#{request_url}\""
     xml = Net::HTTP.get(URI.parse(request_url))
+
+    puts xml
 
 
   end

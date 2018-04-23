@@ -1,7 +1,5 @@
 class CategoriesController < ApplicationController
   def show
-  	@categories = Category.all
-  	
-  	puts @categories
+  	@categories = Category.includes(:product).all
   end
 end

@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   def show
-  	@products = Product.all
+  	@categories = Category.all
+  	
+  	puts @categories
   end
 end

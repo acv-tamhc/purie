@@ -1,2 +1,38 @@
-<h1>Products#detail</h1>
-<p>Find me in app/views/products/detail.html.erb</p>
+.page-product-content
+	.page-breadcrum
+		= link_to(root_path, :class => 'img') do
+			| Home
+		= link_to(category_detail_path(@product.category_id), :class => 'img') do
+			| #{@product.title}
+		= link_to(product_detail_path(@product.id), :class => 'img') do
+			| #{@product.title}
+	.page-product-title
+		h3
+			| #{@product.title}
+	.page-content-cnts
+		.page-product-left
+			.image_product.center
+				= image_tag(@product.picture)
+		.page-product-right
+			h1.product-name
+				| #{@product.title}
+			p.product-description
+				| #{@product.description}
+			.list_action
+				= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': @product.id}
+				= link_to "More detail", "#", { :class => "more_detail btn", 'data-id': @product.id}
+
+	- unless @product_recent.nil?
+		.box-recent
+			.box-title
+				h3
+					| Recent products
+			.box-content
+				.list_product_recent.list_product.list-scroll
+					- @product_recent.each do |product|
+						.item
+							= link_to(product_detail_path(product.id), :class => 'img') do
+								.img
+									= image_tag(product.picture)
+								p.title #{product.title}
+			.list-product

@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 	before_action :set_product, only: [:show]
   def show
-  	@product_recent = @product.category.product.except(@product.id).take(6)
+  	@product_recent = @product.category.product.where("id != ?", @product.id).take(6)
   end
 
   private

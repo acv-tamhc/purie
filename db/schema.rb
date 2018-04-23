@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20180323103946) do
+=======
+ActiveRecord::Schema.define(version: 20180420105324) do
+>>>>>>> master
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "namespace"
@@ -43,23 +47,12 @@ ActiveRecord::Schema.define(version: 20180323103946) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-  create_table "product_groups", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer "group_id"
-    t.string "group_nav"
-    t.string "picture"
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
-    t.string "link"
-    t.text "short"
-    t.string "meta_title"
-    t.string "meta_key"
-    t.string "meta_desc"
-    t.integer "viewer"
-    t.string "lang"
+    t.text "description"
+    t.string "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "published", default: true
-    t.bigint "product_group_id"
-    t.index ["product_group_id"], name: "index_product_groups_on_product_group_id"
   end
 
   create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -67,29 +60,33 @@ ActiveRecord::Schema.define(version: 20180323103946) do
   end
 
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+<<<<<<< HEAD
     t.string "item_id"
     t.string "group_nav"
     t.integer "group_id"
     t.string "item_related"
+=======
+>>>>>>> master
     t.string "item_code"
     t.string "picture"
-    t.string "galleries"
     t.string "title"
     t.float "price", limit: 24
+<<<<<<< HEAD
     t.float "price_sale", limit: 24
     t.text "short"
     t.text "content"
     t.string "link"
+=======
+>>>>>>> master
     t.string "meta_title"
     t.string "meta_key"
     t.string "meta_desc"
-    t.integer "in_stock"
-    t.integer "out_stock"
-    t.integer "viewer"
-    t.string "lang"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "published", default: true
+    t.bigint "category_id"
+    t.text "description"
+    t.index ["category_id"], name: "index_products_on_category_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -109,5 +106,4 @@ ActiveRecord::Schema.define(version: 20180323103946) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "product_groups", "product_groups"
 end

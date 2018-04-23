@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   root to: 'home#index'
   get 'products/:id', to: 'products#show', :as => 'product_detail'
   get 'all-products', to: 'categories#show', :as => 'category_all'
-  get 'category/:id', to: 'categories#show' :as => 'category_detail'
+  get 'category/:id', to: 'categories#show', :as => 'category_detail'
 end

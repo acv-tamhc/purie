@@ -1,3 +1,3 @@
 class Product < ApplicationRecord
-	belongs_to :categories, dependent: :destroy
+	belongs_to :category, dependent: :destroy
 end

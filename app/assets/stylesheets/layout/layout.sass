@@ -98,6 +98,22 @@
       padding-bottom: 5px
 
 
+.page-breadcrum
+  padding-top: 20px
+  a
+    padding-right: 25px
+    position: relative
+    font-size: 12px
+    &:after
+      content: '>'
+      position: absolute
+      right: 0
+      top: 0
+      padding: 0 10px
+      display: block
+    &:last-child:after
+      display: none
+
 
 .box-product
   .box-title

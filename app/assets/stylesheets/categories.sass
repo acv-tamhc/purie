@@ -1,0 +1,58 @@
+.page-category
+	.page-title
+		padding: 20px 0 10px
+		font-size: 18px
+		color: #272727
+		text-transform: uppercase
+	.page-category-content
+		border: 1px solid #ccc
+		border-radius: 5px
+		padding: 5px
+	.category-title
+		display: block
+		background: lightblue
+		color: #fff
+		display: block
+		width: 100%
+		padding: 5px 0 5px 5px
+		border-radius: 2px
+	.list-products
+		&:after
+			content: ''
+			clear: both
+			display: block
+		.item
+			float: left
+			width: 25%
+			padding: 20px 5px
+			margin-bottom: 5px
+			border: 1px solid #fff
+			border-radius: 5px
+			+transition(all ease-in-out 500ms)
+			&:nth-child(4n+1)
+				clear: both
+			&:hover
+				border-color: #ccc
+			a.img 
+				display: block
+				text-decoration: none
+				
+			div.img
+				position: relative
+				padding-top: 100%
+				overflow: hidden
+				> img
+					position: absolute
+					top: 50%
+					left: 50%
+					transform: translate(-50%, -50%)
+					max-width: 100%
+					max-height: 100%
+			.title
+				max-height: 50px
+				overflow: hidden
+				padding: 10px 5px
+				text-align: justify
+				line-height: 20px
+
+	

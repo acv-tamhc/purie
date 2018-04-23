@@ -3,7 +3,7 @@
 		= link_to(root_path, :class => 'img') do
 			| Home
 		= link_to(category_detail_path(@product.category_id), :class => 'img') do
-			| #{@product.title}
+			| #{@product.category.title}
 		= link_to(product_detail_path(@product.id), :class => 'img') do
 			| #{@product.title}
 	.page-product-title

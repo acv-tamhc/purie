@@ -18,6 +18,11 @@
 				| #{@product.title}
 			p.product-description
 				| #{@product.description}
+			p.price
+				span
+					| Price: 
+				span.focus
+					| #{@product.price}
 			.list_action
 				= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': @product.id}
 				= link_to "More detail", "#", { :class => "more_detail btn", 'data-id': @product.id}
@@ -35,4 +40,10 @@
 								.img
 									= image_tag(product.picture)
 								p.title #{product.title}
+								p.price
+									span
+										| Price: 
+									span.focus
+										| #{@product.price}
+								= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': product.id}
 			.list-product

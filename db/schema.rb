@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20180323103946) do
-=======
 ActiveRecord::Schema.define(version: 20180420105324) do
->>>>>>> master
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "namespace"
@@ -55,29 +51,11 @@ ActiveRecord::Schema.define(version: 20180420105324) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_images", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string "title"
-  end
-
   create_table "products", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-<<<<<<< HEAD
-    t.string "item_id"
-    t.string "group_nav"
-    t.integer "group_id"
-    t.string "item_related"
-=======
->>>>>>> master
     t.string "item_code"
     t.string "picture"
     t.string "title"
     t.float "price", limit: 24
-<<<<<<< HEAD
-    t.float "price_sale", limit: 24
-    t.text "short"
-    t.text "content"
-    t.string "link"
-=======
->>>>>>> master
     t.string "meta_title"
     t.string "meta_key"
     t.string "meta_desc"

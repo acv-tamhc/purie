@@ -63,11 +63,14 @@ html
 
       .page-content
       	.wrapper
-          .notice
-      		  = notice
-          .alert
-      		  = alert
-          = yield
+          .wrapper-content
+            - unless notice.blank?
+              .notice
+          		  = notice
+            - unless alert.blank?
+              .alert
+          		  = alert
+            = yield
 
 
       .footer

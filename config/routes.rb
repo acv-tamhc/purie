@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: 'home#index'
   get 'products/:title', to: 'products#show'
+  get 'all-products', to: 'categories#show'
+  get 'product/:id', to: 'products#detail'
 end

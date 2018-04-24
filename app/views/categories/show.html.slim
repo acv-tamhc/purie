@@ -17,6 +17,11 @@
 										.img
 											= image_tag(product.picture)
 										p.title #{product.title}
+										p.price
+											span
+												| Price: 
+											span.focus
+												| #{product.price}
 										= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': product.id}
 
 			- unless @categories.nil?
@@ -32,4 +37,9 @@
 										.img
 											= image_tag(product.picture)
 										p.title #{product.title}
-										= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': @product.id}
+										p.price
+											span
+												| Price: 
+											span.focus
+												| #{product.price}
+										= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': product.id}

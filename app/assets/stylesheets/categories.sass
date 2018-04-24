@@ -1,3 +1,7 @@
+@import '../../assets/bower_components/bemify/sass/bemify'
+@import '../../assets/bower_components/sass-flex-mixin/flex'
+@import '../../assets/bower_components/sass-mixins/mixins'
+@import '../../assets/bower_components/Buttons/scss/buttons'
 .page-category
 	.page-title
 		padding: 20px 0 10px
@@ -60,6 +64,10 @@
 				text-align: justify
 				line-height: 20px
 				margin-bottom: 5px
+			p.price
+				padding: 10px 5px
+				span.focus
+					color: red
 			.btn.add_cart
 				border: 1px solid #405157
 				border-radius: 2px
@@ -75,10 +83,10 @@
 				background: -ms-linear-gradient(top, #405157 0%, #0f1a1e 51%, #000203 74%, #405157 100%)
 				background: linear-gradient(to bottom, #405157 0%, #0f1a1e 51%, #000203 74%, #405157 100%)
 				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#b7deed', GradientType=0 )
-				transition: all ease-in-out 500ms
+				+transition(ease-in-out 500ms)
 				&:hover
 					opacity: .8
-					transition: all ease-in-out 500ms
+					+transition(ease-in-out 500ms)
 					background: lightblue
 					background: -moz-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(0,230,242,1) 74%, rgba(183,222,237,1) 100%)
 					background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(183,222,237,1)), color-stop(51%, rgba(113,206,239,1)), color-stop(74%, rgba(0,230,242,1)), color-stop(100%, rgba(183,222,237,1)))

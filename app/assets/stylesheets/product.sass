@@ -1,3 +1,7 @@
+@import '../../assets/bower_components/bemify/sass/bemify'
+@import '../../assets/bower_components/sass-flex-mixin/flex'
+@import '../../assets/bower_components/sass-mixins/mixins'
+@import '../../assets/bower_components/Buttons/scss/buttons'
 .page-content-cnts
 	&:after
 		content: ''
@@ -10,6 +14,29 @@
 		float: left
 		width: 50%
 		padding: 10px
+		h1 
+			font-size: 25px
+			line-height: 30px
+		p.product-description
+			padding: 10px 0
+		p.price
+			padding: 10px 0
+			span
+				padding: 0
+				font-size: 15px
+				&.focus
+					font-size: 22px
+					color: red
+
+	.list_social
+		margin-bottom: 20px
+		a
+			display: inline-block
+			padding: 0 5px
+			border: 1px solid #ccc
+			border-radius: 2px
+			background: #efefef
+			margin-right: 5px
 	.list_action
 		.btn
 			display: block
@@ -29,11 +56,11 @@
 			background: -ms-linear-gradient(top, #405157 0%, #0f1a1e 51%, #000203 74%, #405157 100%)
 			background: linear-gradient(to bottom, #405157 0%, #0f1a1e 51%, #000203 74%, #405157 100%)
 			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#b7deed', GradientType=0 )
-			transition: all ease-in-out 500ms
+			+transition(ease-in-out 500ms)
 			&:hover
 				opacity: .8
 				background: lightblue
-				transition: all ease-in-out 500ms
+				+transition(ease-in-out 500ms)
 				background: -moz-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(0,230,242,1) 74%, rgba(183,222,237,1) 100%)
 				background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(183,222,237,1)), color-stop(51%, rgba(113,206,239,1)), color-stop(74%, rgba(0,230,242,1)), color-stop(100%, rgba(183,222,237,1)))
 				background: -webkit-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(0,230,242,1) 74%, rgba(183,222,237,1) 100%)
@@ -73,6 +100,7 @@
 	.owl-controls
 		display: none!important
 	.item
+		padding: 5px
 		width: 25%
 		float: left
 		a 
@@ -92,5 +120,34 @@
 			padding: 10px
 			height: 45px
 			overflow: hidden
-
-
+		p.price
+			padding: 10px 5px
+			span.focus
+				color: red
+		.btn.add_cart
+			border: 1px solid #405157
+			border-radius: 2px
+			box-shadow: 1px 1px #405157
+			display: block
+			width: 100%
+			color: #fff
+			background: #405157
+			background: -moz-linear-gradient(top, #405157 0%, #0f1a1e 51%, #000203 74%, #405157 100%)
+			background: -webkit-gradient(left top, left bottom, color-stop(0%, #405157), color-stop(51%, #0f1a1e), color-stop(74%, #000203), color-stop(100%, #405157))
+			background: -webkit-linear-gradient(top, #405157 0%, #0f1a1e 51%, #000203 74%, #405157 100%)
+			background: -o-linear-gradient(top, #405157 0%, #0f1a1e 51%, #000203 74%, #405157 100%)
+			background: -ms-linear-gradient(top, #405157 0%, #0f1a1e 51%, #000203 74%, #405157 100%)
+			background: linear-gradient(to bottom, #405157 0%, #0f1a1e 51%, #000203 74%, #405157 100%)
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#b7deed', GradientType=0 )
+			+transition(ease-in-out 500ms)
+			&:hover
+				opacity: .8
+				+transition(ease-in-out 500ms)
+				background: lightblue
+				background: -moz-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(0,230,242,1) 74%, rgba(183,222,237,1) 100%)
+				background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(183,222,237,1)), color-stop(51%, rgba(113,206,239,1)), color-stop(74%, rgba(0,230,242,1)), color-stop(100%, rgba(183,222,237,1)))
+				background: -webkit-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(0,230,242,1) 74%, rgba(183,222,237,1) 100%)
+				background: -o-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(0,230,242,1) 74%, rgba(183,222,237,1) 100%)
+				background: -ms-linear-gradient(top, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(0,230,242,1) 74%, rgba(183,222,237,1) 100%)
+				background: linear-gradient(to bottom, rgba(183,222,237,1) 0%, rgba(113,206,239,1) 51%, rgba(0,230,242,1) 74%, rgba(183,222,237,1) 100%)
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b7deed', endColorstr='#b7deed', GradientType=0 )

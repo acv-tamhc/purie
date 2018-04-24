@@ -23,9 +23,22 @@
 					| Price: 
 				span.focus
 					| #{@product.price}
-			.list_social
-				a
-					span.fa.fa-facebook
+			.share_social
+				.share_title
+					| Share: 
+				.list_social
+					- unless @social[:facebook].nil?
+						= link_to(@social[:facebook]) do
+							span.icon-facebook
+					- unless @social[:twitter].nil?
+						= link_to(@social[:twitter]) do
+							span.icon-twitter
+					- unless @social[:google].nil?
+						= link_to(@social[:google]) do
+							span.icon-google-plus
+					- unless @social[:youtube].nil?
+						= link_to(@social[:youtube]) do
+							span.icon-youtube
 			.list_action
 				= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': @product.id}
 				= link_to "More detail", "#", { :class => "more_detail btn", 'data-id': @product.id}

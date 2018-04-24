@@ -9,6 +9,10 @@ class ProductsController < ApplicationController
       @product_recent = Product.where("id IN (" + session[:product_recent].join(",") + ")").take(6)
     end
     session[:product_recent].push(@product.id)
+    @social = Hash.new
+    @social[:facebook] = 'https://www.facebook.com/sharer.php?s=100&p[url]=' + product_detail_path(@product.id)
+    @social[:twitter] = 'https://twitter.com/intent/tweet?url=' + product_detail_path(@product.id)
+    @social[:google] = 'https://plus.google.com/share?url=' + product_detail_path(@product.id)
   end
 
   private

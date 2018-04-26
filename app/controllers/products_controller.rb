@@ -14,6 +14,9 @@ class ProductsController < ApplicationController
     @social[:facebook] = 'https://www.facebook.com/sharer.php?s=100&p[url]=' + product_detail_path(@product.id)
     @social[:twitter] = 'https://twitter.com/intent/tweet?url=' + product_detail_path(@product.id)
     @social[:google] = 'https://plus.google.com/share?url=' + product_detail_path(@product.id)
+
+    @order_detail = OrderDetail.new
+    @order_detail.product = @product
   end
 
   private

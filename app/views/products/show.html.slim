@@ -20,9 +20,17 @@
 				| #{@product.description}
 			p.price
 				span
-					| Price: 
+					label
+						| Price:&nbsp;&nbsp;
 				span.focus
 					| #{@product.price}
+			
+			.list_action
+				= simple_form_for(@order_detail, :url => cart_path, :html => { :class => 'form_add_cart', 'onsubmit' => 'return false'}) do |f|
+					= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1}
+					= f.input :product_id, input_html: { type: 'hidden' }
+					= f.button :submit, "Add cart", class: "add_cart btn"
+				= link_to "More detail", "#", { :class => "more_detail btn", 'data-id': @product.id}
 			.share_social
 				.share_title
 					| Share: 
@@ -39,9 +47,6 @@
 					- unless @social[:youtube].nil?
 						= link_to(@social[:youtube]) do
 							span.icon-youtube
-			.list_action
-				= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': @product.id}
-				= link_to "More detail", "#", { :class => "more_detail btn", 'data-id': @product.id}
 
 	- unless @product_recent.nil?
 		.box-recent

@@ -10,6 +10,9 @@ html
 
   body
     .page-wrapper
+      .loading
+        .loading-image-wrapper
+          .loading-image
       .menu-top
         .wrapper
           ul.list_menu_top.list_none
@@ -23,8 +26,8 @@ html
               = link_to('#', :class => 'item') do
                 | Hot
             li.menu-item
-              = link_to('#', :class => 'item') do
-                | Promotion
+              = link_to(cart_path, :class => 'item') do
+                | Cart
 
       .header
         .wrapper

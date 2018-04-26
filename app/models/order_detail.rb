@@ -6,8 +6,4 @@ class OrderDetail < ApplicationRecord
 	def get_total
 		self.total = self.product.price * self.quantity
 	end
-
-	# def to_s
-	# 	self.quantity.to_s + self.total.to_s
-	# end
 end

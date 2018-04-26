@@ -26,7 +26,7 @@
 					| #{@product.price}
 			
 			.list_action
-				= simple_form_for(@order_detail, :url => cart_path, :html => { :class => 'form_add_cart'}) do |f|
+				= simple_form_for(@order_detail, :url => cart_path, :html => { :class => 'form_add_cart', 'onsubmit' => 'return false'}) do |f|
 					= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1}
 					= f.input :product_id, input_html: { type: 'hidden' }
 					= f.button :submit, "Add cart", class: "add_cart btn"

@@ -6,6 +6,7 @@ class CartController < ApplicationController
 			@result = Hash.new
 			@result["status"] = false
 			@result["message"] = "Not add to cart"
+			puts params[:order_detail]
 			if session[:cart][params[:order_detail][:product_id]].nil?
 				@order_detail = OrderDetail.new
 				@order_detail.quantity = 1
@@ -16,13 +17,20 @@ class CartController < ApplicationController
 				@result["status"] = true
 				@result["message"] = "Add to cart successful"
 			else
-				order_detail = session[:cart][params[:order_detail][:product_id]]
+				@order_detail = session[:cart][params[:order_detail][:product_id]]
 				if params[:order_detail]['quantity'].nil?
-					session[:cart][params[:order_detail]['product_id']][:quantity] = order_detail[:quantity] + 1
+					@order_detail['quantity'] = @order_detail['quantity'].to_f + 1
 				else
-					session[:cart][params[:order_detail]['product_id']][:quantity] = order_detail[:quantity].to_f + params[:order_detail]['quantity'].to_f					
+					if params['update_cart'].nil?
+						@order_detail['quantity'] = @order_detail['quantity'].to_f + params[:order_detail]['quantity'].to_f
+					else
+						@order_detail['quantity'] = params[:order_detail]['quantity'].to_f
+						@result["refresh"] = 1
+					end
 				end
-				session[:cart][params[:order_detail]['product_id']][:total] = order_detail[:quantity] * Product.find(params[:order_detail]['product_id']).price
+				@order_detail['total'] = @order_detail['quantity'] * Product.find(params[:order_detail]['product_id']).price
+				session[:cart][params[:order_detail][:product_id]] = @order_detail
+				puts session[:cart]
 				@result["status"] = true
 				@result["message"] = "Add to cart successful"
 			end
@@ -37,7 +45,7 @@ class CartController < ApplicationController
 				od.product_id = o["product_id"]
 				od.quantity = o["quantity"]
 				od.total = o["total"]
-				@total += o["total"]
+				@total += o["total"].to_f
 				@cart[k] = od
 			}
 		end

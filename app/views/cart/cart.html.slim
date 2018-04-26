@@ -1,2 +1,32 @@
-h1
-	| This is cart page
+.page-cart
+	.page-wrapper
+		h1
+			| #{@page_title}
+	.page-cart-content
+		- unless @cart.nil?
+			.list-cart
+				.th-head
+					.list_item.list_cart_head
+						.item
+							| Name
+						.item
+							| Quantity
+						.item
+							| Total
+				.th-body
+					- @cart.each do |k, v|
+						.list_item
+							.item.item-title
+								= link_to v.product.title, product_detail_path(v.product.id), { :class => "title"}
+							.item.item-quantiy
+								= simple_form_for(v, :url => cart_path, :html => { :class => 'form_update_cart', 'onsubmit' => 'return false'}) do |f|
+									= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1}
+									= f.input :product_id, input_html: { type: 'hidden' }
+							.item.total
+								= v.total
+				.th-footer
+					.list_item.list_footer
+						.item
+							| Total
+						.item
+							| #{@total}

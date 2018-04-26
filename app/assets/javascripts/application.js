@@ -15,3 +15,4 @@
 //= require owl.carousel
 //= require ./categories
 //= require ./products
+//= require ./cart

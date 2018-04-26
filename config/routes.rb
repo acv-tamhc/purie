@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: 'home#index'
-  get 'cart', to: 'order#cart', :as => 'cart'
-  get 'order', to: 'order#cart', :as => 'order'
+  match '/cart', to: 'cart#cart', :as => 'cart', via: :all
   resources :orders
   resources :order_details
   get 'products/:id', to: 'products#show', :as => 'product_detail'

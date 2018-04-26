@@ -4,6 +4,12 @@
 			| #{@page_title}
 	.page-cart-content
 		= simple_form_for(@order , :url => cart_address_path, :html => { :class => 'form_cart_address'}) do |f|
+			- if @order.errors.any?
+				#error_explanation
+				h2 = "#{pluralize(@order.errors.count, "error")} prohibited this photo from being saved:"
+				ul 
+					- @order.errors.full_messages.each do |message|
+						li = message
 			= f.input :email, required: true, input_html: { class: 'quantity'}
 			= f.input :phone, required: true, input_html: { class: 'phone' }
 			= f.input :address, required: true, input_html: { class: 'address' }

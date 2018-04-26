@@ -1,4 +1,5 @@
 class CartController < ApplicationController
+	before_action :check_cart, only: [:address, :checkout]
 	def cart
 		@page_title = 'Cart'
 		session[:cart] = Hash.new if session[:cart].nil?
@@ -6,7 +7,6 @@ class CartController < ApplicationController
 			@result = Hash.new
 			@result["status"] = false
 			@result["message"] = "Not add to cart"
-			puts params[:order_detail]
 			if session[:cart][params[:order_detail][:product_id]].nil?
 				@order_detail = OrderDetail.new
 				@order_detail.quantity = 1
@@ -30,7 +30,6 @@ class CartController < ApplicationController
 				end
 				@order_detail['total'] = @order_detail['quantity'] * Product.find(params[:order_detail]['product_id']).price
 				session[:cart][params[:order_detail][:product_id]] = @order_detail
-				puts session[:cart]
 				@result["status"] = true
 				@result["message"] = "Add to cart successful"
 			end
@@ -49,8 +48,60 @@ class CartController < ApplicationController
 				@cart[k] = od
 			}
 		end
+		session[:cart_total] = @total
+	end
+	def address 
+		@page_title = "Address"
+		@order = Order.new
+		unless params[:order].nil?
+			@order = Order.new(order_params)
+			if @order.valid?
+				session[:order] = order_params
+				redirect_to cart_checkout_url
+			end
+		end
+	end
+	def checkout
+		@page_title = "Checkout"
+		cart = session[:cart]
+		@cart = Hash.new
+		cart.each { |k, v|
+			od = OrderDetail.new
+			od.product_id = v["product_id"]
+			od.quantity = v["quantity"]
+			od.total = v["total"]
+			@cart[k] = od
+		}
+		@total = session[:cart_total]
+		order = session[:order]
+		@order = Order.new
+		@order.email = order["email"]
+		@order.phone = order["phone"]
+		@order.address = order["address"]
+		@order.description = order["description"]
+		@order.total = @total
+
+		unless params[:update_checkout].nil?
+		#unless params[:abc].nil?
+			if @order.save
+				@cart.each { |k, v|
+					item = @cart[k]
+					item.order_id = @order.id
+					item.save
+				}
+			end
+		end
+
 	end
 	private
+	def check_cart
+		if session[:cart].empty?
+			redirect_to cart_url
+		end
+	end
+	def order_params
+		params.require(:order).permit(:email, :phone, :address, :description)
+	end
 	def cart_params
   	params.require(:order_detail).permit(:quantity, :product_id)
   end

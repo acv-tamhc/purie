@@ -22,7 +22,7 @@ jQuery ->
 				$.ajax v.attr('action'),
 				type: 'POST'
 				data: v.serialize()
-				# dataType: 'json'
+				dataType: 'json'
 				beforeSend: ->
 					Loadding.open()
 				error: (e) ->

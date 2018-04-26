@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   root to: 'home#index'
   match '/cart', to: 'cart#cart', :as => 'cart', via: :all
+  match '/cart/address', to: 'cart#address', :as => 'cart_address', via: :all
   resources :orders
   resources :order_details
   get 'products/:id', to: 'products#show', :as => 'product_detail'

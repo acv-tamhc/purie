@@ -40,4 +40,8 @@
 						.item
 							| Total
 						.item
-							| #{@total}
+							p 
+								| #{@total}
+							.checkout.button_right
+								= link_to cart_address_path, { :class => "btn btn-check-out" } do
+									| Check out

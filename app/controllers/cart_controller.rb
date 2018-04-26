@@ -30,7 +30,6 @@ class CartController < ApplicationController
 				end
 				@order_detail['total'] = @order_detail['quantity'] * Product.find(params[:order_detail]['product_id']).price
 				session[:cart][params[:order_detail][:product_id]] = @order_detail
-				puts session[:cart]
 				@result["status"] = true
 				@result["message"] = "Add to cart successful"
 			end
@@ -48,6 +47,19 @@ class CartController < ApplicationController
 				@total += o["total"].to_f
 				@cart[k] = od
 			}
+		end
+		session[:cart_total] = @total
+	end
+	def address
+		@page_title = "Address"
+		@order = Order.new
+		unless params[:order].nil?
+			order = Hash.new
+			order["email"] = params[:order]["email"]
+			order["phone"] = params[:order]["phone"]
+			order["address"] = params[:order]["address"]
+			order["description"] = params[:order]["description"]
+			session[:order] = order
 		end
 	end
 	private

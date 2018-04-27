@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420070518) do
+ActiveRecord::Schema.define(version: 20180420105324) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "namespace"
@@ -56,11 +56,6 @@ ActiveRecord::Schema.define(version: 20180420070518) do
     t.string "picture"
     t.string "title"
     t.float "price", limit: 24
-    t.float "price_buy", limit: 24
-    t.float "price_sale", limit: 24
-    t.text "short"
-    t.text "content"
-    t.string "link"
     t.string "meta_title"
     t.string "meta_key"
     t.string "meta_desc"
@@ -68,6 +63,7 @@ ActiveRecord::Schema.define(version: 20180420070518) do
     t.datetime "updated_at", null: false
     t.boolean "published", default: true
     t.bigint "category_id"
+    t.text "description"
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 

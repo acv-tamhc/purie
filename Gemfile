@@ -39,6 +39,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -55,6 +56,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Custom gem
 gem 'slim'
 gem 'bootstrap-sass', '~> 3.3.7'
+gem 'owlcarousel-rails'
 gem 'jquery-rails'
 gem 'activeadmin'
 gem 'devise'

@@ -1,0 +1,36 @@
+$font_path : asset_path('./fonts/purie-icon.eot?1dnfyy')
+$font_path_ttf : asset_path('./fonts/purie-icon.ttf?1dnfy')
+$font_path_woff : asset_path('./fonts/purie-icon.woff?1dnfy')
+$font_path_svg : asset_path('./fonts/purie-icon.svg?1dnfy')
+@font-face
+  font-family: 'purie-icon'
+  src:  url($font_path)
+  src:  url($font_path) format('embedded-opentype'), url($font_path_ttf) format('truetype'), url($font_path_woff) format('woff'), url($font_path_svg) format('svg')
+  font-weight: normal
+  font-style: normal
+
+[class^="icon-"], [class*=" icon-"] 
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'purie-icon' !important
+  speak: none
+  font-style: normal
+  font-weight: normal
+  font-variant: normal
+  text-transform: none
+  line-height: 1
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+.icon-google-plus:before 
+  content: "\ea8b"
+
+.icon-facebook:before 
+  content: "\ea90"
+
+.icon-twitter:before 
+  content: "\ea96"
+
+.icon-youtube:before 
+  content: "\ea9d"

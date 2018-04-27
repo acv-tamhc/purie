@@ -89,6 +89,10 @@ class CartController < ApplicationController
 					item.order_id = @order.id
 					item.save
 				}
+				# session[:cart_total] = 0
+				# session[:cart] = nil
+				# session[:order] = nil
+				# redirect_to root_url
 			end
 		end
 

@@ -8,6 +8,25 @@ class ProductsController < ApplicationController
     elsif session[:product_recent].count > 1
       @product_recent = Product.where("id IN (" + session[:product_recent].join(",") + ")").take(6)
     end
+
+    @order_related = Hash.new
+    unless @product_related.nil?
+      @product_related.each { |product|
+        od = OrderDetail.new
+        od.quantity = 1
+        od.product_id = product.id
+        @order_related[product.id] = od
+      }
+    end
+    @order_recent = Hash.new
+    unless @product_related.nil?
+      @product_recent.each { |product|
+        od = OrderDetail.new
+        od.quantity = 1
+        od.product_id = product.id
+        @order_recent[product.id] = od
+      }
+    end
     
     session[:product_recent].push(@product.id) unless session[:product_recent].include? @product.id
     @social = Hash.new

@@ -66,7 +66,10 @@
 										| Price: 
 									span.focus
 										| #{product.price}
-								= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': product.id}
+								= simple_form_for(@order_recent[product.id], :url => cart_path, :html => { :class => 'form_add_cart', 'onsubmit' => 'return false'}) do |f|
+									= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1, type: 'hidden'}
+									= f.input :product_id, input_html: { type: 'hidden' }
+									= f.button :submit, "Add cart", class: "add_cart btn"
 
 	- unless @product_related.nil?
 			.box-recent
@@ -86,4 +89,7 @@
 											| Price: 
 										span.focus
 											| #{product.price}
-									= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': product.id}
+									= simple_form_for(@order_related[product.id], :url => cart_path, :html => { :class => 'form_add_cart', 'onsubmit' => 'return false'}) do |f|
+										= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1, type: 'hidden'}
+										= f.input :product_id, input_html: { type: 'hidden' }
+										= f.button :submit, "Add cart", class: "add_cart btn"

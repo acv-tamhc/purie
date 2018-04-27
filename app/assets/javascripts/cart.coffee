@@ -51,3 +51,27 @@ jQuery ->
 					if(data.refresh)
 						location.reload()
 					Loadding.open()
+
+	paypal.Button.render({
+		env: 'sandbox',
+		client: {
+	    sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+	    production: '<insert production client id>'
+		},
+		commit: true,
+		payment: (data, actions) -> 
+			return actions.payment.create({
+				payment: {
+					transactions: [
+						{
+							amount: { total: $('#order_total').val(), currency: 'USD' }
+						}
+					]
+				}
+			})
+		,
+		onAuthorize: (data, actions) -> 
+			return actions.payment.execute().then ->
+				# window.alert('Payment Complete!')
+				$('.form_checkout').submit()
+	}, '#paypal-button-container')

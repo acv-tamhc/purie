@@ -28,4 +28,7 @@
 								| Description: 
 							span #{@order.description}
 						= hidden_field_tag "update_checkout", 1
+						= hidden_field_tag "order_total", @order.total
 						= f.button :submit, "Payment", class: "update_cart_address btn"
+						.wrapper-paypal
+							#paypal-button-container

@@ -19,7 +19,7 @@ class ProductsController < ApplicationController
       }
     end
     @order_recent = Hash.new
-    unless @product_related.nil?
+    unless @product_recent.nil?
       @product_recent.each { |product|
         od = OrderDetail.new
         od.quantity = 1

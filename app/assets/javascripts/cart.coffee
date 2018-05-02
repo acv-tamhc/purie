@@ -33,9 +33,15 @@ jQuery ->
 					console.log(data)
 					alert(data.message)
 					Loadding.open()
+
 	$ '.form_update_cart'
 		.each ->
 			v = $(this)
+			v.find('.btn_remove_cart')
+				.click ->
+					v.find('#remove_cart').val(1)
+					v.submit()
+					return false
 			v.submit ->
 				$.ajax v.attr('action'),
 				type: 'POST'
@@ -48,30 +54,31 @@ jQuery ->
 					alert('Not update cart')
 					console.log(e.responseText)
 				success: (data, textStatus, jqXHR) ->
+					Loadding.open()
 					if(data.refresh)
 						location.reload()
-					Loadding.open()
-
-	paypal.Button.render({
-		env: 'sandbox',
-		client: {
-	    sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
-	    production: '<insert production client id>'
-		},
-		commit: true,
-		payment: (data, actions) -> 
-			return actions.payment.create({
-				payment: {
-					transactions: [
-						{
-							amount: { total: $('#order_total').val(), currency: 'USD' }
-						}
-					]
-				}
-			})
-		,
-		onAuthorize: (data, actions) -> 
-			return actions.payment.execute().then ->
-				# window.alert('Payment Complete!')
-				$('.form_checkout').submit()
-	}, '#paypal-button-container')
+					
+	if $('#paypal-button-container').length
+		paypal.Button.render({
+			env: 'sandbox',
+			client: {
+		    sandbox:    'AZDxjDScFpQtjWTOUtWKbyN_bDt4OgqaF4eYXlewfBP4-8aqX3PiV8e1GWU6liB2CUXlkA59kJXE7M6R',
+		    production: '<insert production client id>'
+			},
+			commit: true,
+			payment: (data, actions) -> 
+				return actions.payment.create({
+					payment: {
+						transactions: [
+							{
+								amount: { total: $('#order_total').val(), currency: 'USD' }
+							}
+						]
+					}
+				})
+			,
+			onAuthorize: (data, actions) -> 
+				return actions.payment.execute().then ->
+					# window.alert('Payment Complete!')
+					$('.form_checkout').submit()
+		}, '#paypal-button-container')

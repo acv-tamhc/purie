@@ -5,5 +5,6 @@ FactoryBot.define do
     title "Product title"
     description "Product description"
     price 299.99
+    category Category.create({title: 'Category', description: 'Category description'})
   end
 end

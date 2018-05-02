@@ -9,7 +9,7 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use mysql2 as the database for Active Record
-gem 'mysql2', '~>0.4.0'
+gem 'mysql2'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -39,6 +39,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -50,12 +51,19 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do
+  gem 'rspec'
+  gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Custom gem
 gem 'slim'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'jquery-rails'
+gem 'owlcarousel-rails'
 gem 'activeadmin'
 gem 'devise'
 gem 'simple_form'
@@ -64,5 +72,4 @@ gem 'paperclip', '~> 5.2.0'
 gem 'font-awesome-sass', '~> 5.0.6'
 gem 'pry-byebug'
 gem 'awesome_print'
-gem 'nokogiri'
 gem 'xml-simple'

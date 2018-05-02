@@ -19,6 +19,11 @@
   ],
   "devDependencies": {
     "Scut": "scut#^1.4.0",
-    "breakpoint-sass": "^2.7.1"
+    "breakpoint-sass": "^2.7.1",
+    "bemify": "0.0.1",
+    "Buttons": "2.0.0",
+    "sass-flex-mixin": "1.0.3",
+    "sass-mixins": "0.12.0",
+    "sass-maps": "0.4.0"
   }
 }

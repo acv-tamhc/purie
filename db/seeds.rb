@@ -18,8 +18,11 @@ Category.create!({title: 'MySQL', description: 'MySQL Description'})
 Category.create!({title: 'Mongo', description: 'Mongo Description'})
 Category.create!({title: 'Node', description: 'Node Description'})
 
+threads = []
 Category.all.each do |cat|
-	params = {
+  threads << Thread.new {
+    puts 'start get data ' + cat.title
+    params = {
       "Service" => "AWSECommerceService",
       "Operation" => "ItemSearch",
       "AWSAccessKeyId" => "AKIAJWPWTVNYFLW7EKHQ",
@@ -46,20 +49,26 @@ Category.all.each do |cat|
 
     # Generate the signed URL
     request_url = "http://#{ENDPOINT}#{REQUEST_URI}?#{canonical_query_string}&Signature=#{URI.escape(signature, Regexp.new("[^#{URI::PATTERN::UNRESERVED}]"))}"
-
     #puts "Signed URL: \"#{request_url}\""
     xml = Net::HTTP.get(URI.parse(request_url))
     json = Hash.from_xml(xml)
-
-    json["ItemSearchResponse"]["Items"]["Item"].each { |i|
-      p = Product.new
-      p.item_code = i["ASIN"]
-      p.picture = i["LargeImage"]["URL"]
-      p.title = i["ItemAttributes"]["Title"]
-      p.description = i["ItemAttributes"]["Title"] + ' description'
-      p.price = 299.99
-      p.price = i["ItemAttributes"]["ListPrice"]["Amount"].to_f if i["ItemAttributes"].key?('ListPrice')
-      p.category_id = cat.id
-      p.save
-    }
+    if json["ItemSearchResponse"].nil?
+      puts 'fail get data'
+    else
+      json["ItemSearchResponse"]["Items"]["Item"].each { |i|
+        p = Product.new
+        p.item_code = i["ASIN"]
+        p.picture = i["LargeImage"]["URL"]
+        p.title = i["ItemAttributes"]["Title"]
+        p.description = i["ItemAttributes"]["Title"] + ' description'
+        p.price = 299.99
+        p.price = i["ItemAttributes"]["ListPrice"]["Amount"].to_f if i["ItemAttributes"].key?('ListPrice')
+        p.category_id = cat.id
+        p.save
+      }
+      puts 'get data successful'
+    end
+  }
 end
+
+threads.each(&:join)

@@ -3,7 +3,7 @@
 		= link_to(root_path, :class => 'img') do
 			| Home
 		= link_to(category_detail_path(@product.category_id), :class => 'img') do
-			| #{@product.title}
+			| #{@product.category.title}
 		= link_to(product_detail_path(@product.id), :class => 'img') do
 			| #{@product.title}
 	.page-product-title
@@ -18,9 +18,35 @@
 				| #{@product.title}
 			p.product-description
 				| #{@product.description}
+			p.price
+				span
+					label
+						| Price:&nbsp;&nbsp;
+				span.focus
+					| #{@product.price}
+			
 			.list_action
-				= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': @product.id}
+				= simple_form_for(@order_detail, :url => cart_path, :html => { :class => 'form_add_cart', 'onsubmit' => 'return false'}) do |f|
+					= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1}
+					= f.input :product_id, input_html: { type: 'hidden' }
+					= f.button :submit, "Add cart", class: "add_cart btn"
 				= link_to "More detail", "#", { :class => "more_detail btn", 'data-id': @product.id}
+			.share_social
+				.share_title
+					| Share: 
+				.list_social
+					- unless @social[:facebook].nil?
+						= link_to(@social[:facebook]) do
+							span.icon-facebook
+					- unless @social[:twitter].nil?
+						= link_to(@social[:twitter]) do
+							span.icon-twitter
+					- unless @social[:google].nil?
+						= link_to(@social[:google]) do
+							span.icon-google-plus
+					- unless @social[:youtube].nil?
+						= link_to(@social[:youtube]) do
+							span.icon-youtube
 
 	- unless @product_recent.nil?
 		.box-recent
@@ -35,4 +61,35 @@
 								.img
 									= image_tag(product.picture)
 								p.title #{product.title}
-			.list-product
+								p.price
+									span
+										| Price: 
+									span.focus
+										| #{product.price}
+								= simple_form_for(@order_recent[product.id], :url => cart_path, :html => { :class => 'form_add_cart', 'onsubmit' => 'return false'}) do |f|
+									= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1, type: 'hidden'}
+									= f.input :product_id, input_html: { type: 'hidden' }
+									= f.button :submit, "Add cart", class: "add_cart btn"
+
+	- unless @product_related.nil?
+			.box-recent
+				.box-title
+					h3
+						| Related products
+				.box-content
+					.list_product_recent.list_product.list-scroll
+						- @product_related.each do |product|
+							.item
+								= link_to(product_detail_path(product.id), :class => 'img') do
+									.img
+										= image_tag(product.picture)
+									p.title #{product.title}
+									p.price
+										span
+											| Price: 
+										span.focus
+											| #{product.price}
+									= simple_form_for(@order_related[product.id], :url => cart_path, :html => { :class => 'form_add_cart', 'onsubmit' => 'return false'}) do |f|
+										= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1, type: 'hidden'}
+										= f.input :product_id, input_html: { type: 'hidden' }
+										= f.button :submit, "Add cart", class: "add_cart btn"

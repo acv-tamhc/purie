@@ -39,6 +39,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -50,13 +51,19 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :test do
+  gem 'rspec'
+  gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Custom gem
 gem 'slim'
 gem 'bootstrap-sass', '~> 3.3.7'
-gem 'owlcarousel-rails'
 gem 'jquery-rails'
+gem 'owlcarousel-rails'
 gem 'activeadmin'
 gem 'devise'
 gem 'simple_form'
@@ -65,5 +72,4 @@ gem 'paperclip', '~> 5.2.0'
 gem 'font-awesome-sass', '~> 5.0.6'
 gem 'pry-byebug'
 gem 'awesome_print'
-gem 'nokogiri'
 gem 'xml-simple'

@@ -17,7 +17,15 @@
 										.img
 											= image_tag(product.picture)
 										p.title #{product.title}
-										= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': product.id}
+										p.price
+											span
+												| Price: 
+											span.focus
+												| #{product.price}
+										= simple_form_for(@order_detail[product.id], :url => cart_path, :html => { :class => 'form_add_cart', 'onsubmit' => 'return false'}) do |f|
+											= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1, type: 'hidden'}
+											= f.input :product_id, input_html: { type: 'hidden' }
+											= f.button :submit, "Add cart", class: "add_cart btn"
 
 			- unless @categories.nil?
 				.box-category
@@ -32,4 +40,12 @@
 										.img
 											= image_tag(product.picture)
 										p.title #{product.title}
-										= link_to "Add cart", "#", { :class => "add_cart btn", 'data-id': product.id}
+										p.price
+											span
+												| Price: 
+											span.focus
+												| #{product.price}
+										= simple_form_for(@order_detail[category.id][product.id], :url => cart_path, :html => { :class => 'form_add_cart', 'onsubmit' => 'return false'}) do |f|
+											= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1, type: 'hidden'}
+											= f.input :product_id, input_html: { type: 'hidden' }
+											= f.button :submit, "Add cart", class: "add_cart btn"

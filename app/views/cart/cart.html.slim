@@ -17,23 +17,27 @@
 							| Total
 				.th-body
 					- @cart.each do |k, v|
-						.list_item.list_cart_item
-							.item.item-title
-								= link_to product_detail_path(v.product.id), { :class => "link_title"} do
-									.img.mini
-										= image_tag v.product.picture
-									.title
-										= v.product.title
-							.item.price
-								= v.product.price
-							.item.item-quantiy
-								= simple_form_for(@cart[k] ,namespace: k, :url => cart_path, :html => { :class => 'form_update_cart', 'onsubmit' => 'return false'}) do |f|
-									= hidden_field_tag "update_cart", 1
-									= f.input :quantity, input_html: { class: 'quantity', min: 1}
-									= f.input :product_id, input_html: { type: 'hidden' }
-									= f.button :submit, "Update", class: "update_cart btn"
-							.item.total
-								= v.total
+						- unless @cart[k].nil?
+							.list_item.list_cart_item
+								.item.item-title
+									= link_to product_detail_path(v.product.id), { :class => "link_title"} do
+										.img.mini
+											= image_tag v.product.picture
+										.title
+											= v.product.title
+								.item.price
+									= v.product.price
+								.item.item-quantiy
+									= simple_form_for(@cart[k] ,namespace: k, :url => cart_path, :html => { :class => 'form_update_cart', 'onsubmit' => 'return false'}) do |f|
+										= hidden_field_tag "update_cart", 1
+										= hidden_field_tag "remove_cart", nil
+										= f.input :quantity, input_html: { class: 'quantity', min: 1}
+										= f.input :product_id, input_html: { type: 'hidden' }
+										= link_to nil, { :class => "update_cart btn_remove_cart btn"} do
+											| Remove
+										= f.button :submit, "Update", class: "update_cart btn"
+								.item.total
+									= v.total
 
 				.th-footer
 					.list_item.list_footer

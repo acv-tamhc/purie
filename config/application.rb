@@ -14,6 +14,8 @@ require 'time'
 require 'uri'
 require 'openssl'
 require 'base64'
+# read file xml
+require 'nokogiri'
 
 # Your Access Key ID, as taken from the Your Account page
 ACCESS_KEY_ID = "AKIAJWPWTVNYFLW7EKHQ"

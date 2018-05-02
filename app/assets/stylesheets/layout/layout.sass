@@ -98,6 +98,22 @@
       padding-bottom: 5px
 
 
+.page-breadcrum
+  padding-top: 20px
+  a
+    padding-right: 25px
+    position: relative
+    font-size: 12px
+    &:after
+      content: '>'
+      position: absolute
+      right: 0
+      top: 0
+      padding: 0 10px
+      display: block
+    &:last-child:after
+      display: none
+
 
 .box-product
   .box-title
@@ -214,3 +230,28 @@
               color: $bg_buy
               background-color: #fff
               +transition(ease-in-out 500ms)
+
+
+.multi-item-carousel
+  .carousel-inner
+    > .item
+      transition: 500ms ease-in-out left
+    .active
+      &.left
+        left: -33%
+      &.right
+        left: 33%
+    .next
+      left: 33%
+    .prev
+      left: -33%
+    @media all and (transform-3d), (-webkit-transform-3d)
+      > .item
+        // use your favourite prefixer here
+        transition: 500ms ease-in-out left
+        transition: 500ms ease-in-out all
+        backface-visibility: visible
+        transform: none!important
+  .carouse-control
+    &.left, &.right
+      background-image: none

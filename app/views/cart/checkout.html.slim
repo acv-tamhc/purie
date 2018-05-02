@@ -1,0 +1,34 @@
+.page-cart
+	.page-wrapper
+		h1
+			| #{@page_title}
+	.page-cart-content
+		.checkout
+			.checkout-info
+				= simple_form_for(@order , :url => cart_checkout_path, :html => { :class => 'form_checkout'}) do |f|
+					.list_item.list_checkout
+						.item
+							span
+								| Email:
+							span #{@order.email}
+						.item
+							span 
+								| Phone: 
+							span #{@order.phone}
+						.item
+							span
+								| Address: 
+							span #{@order.address}
+						.item
+							span
+								| Total: 
+							span.focus #{@order.total}
+						.item
+							span
+								| Description: 
+							span #{@order.description}
+						= hidden_field_tag "update_checkout", 1
+						= hidden_field_tag "order_total", @order.total
+						= f.button :submit, "Payment", class: "update_cart_address btn"
+						.wrapper-paypal
+							#paypal-button-container

@@ -6,75 +6,81 @@ html
     = csrf_meta_tags
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'https://www.paypalobjects.com/api/checkout.js'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-
+    
   body
     .page-wrapper
+      .loading
+        .loading-image-wrapper
+          .loading-image
       .menu-top
         .wrapper
           ul.list_menu_top.list_none
             li.menu-item
-              a
+              = link_to('#', :class => 'item') do
                 | Support
             li.menu-item
-              a
+              = link_to('#', :class => 'item') do
                 | Map
             li.menu-item
-              a
+              = link_to('#', :class => 'item') do
                 | Hot
             li.menu-item
-              a
-                | Promotion
+              = link_to(cart_path, :class => 'item') do
+                | Cart
 
       .header
         .wrapper
           .logo
-            a> href =home_index_path()
+            = link_to('#', :class => 'logo') do
               = image_tag 'logo.png'
 
       .main-menu
         .wrapper
           ul.list_menu.list_none
             li.menu-item
-              a
+              = link_to(root_path, :class => 'item') do
                 | Home
             li.menu-item
-              a
-                | Introduction
+              = link_to(category_detail_path(10), :class => 'item') do
+                | Node
             li.menu-item
-              a
+              = link_to(category_all_path, :class => 'item') do
                 | All products
+            li.menu-item
+              = link_to(category_detail_path(1), :class => 'item') do
+                | Ruby
+            li.menu-item
+              = link_to(category_detail_path(2), :class => 'item') do
+                | PHP
 
             li.menu-item
-              a
-                | Services
-            li.menu-item
-              a
-                | Books
+              = link_to(category_detail_path(4), :class => 'item') do
+                | JavaScript
 
             li.menu-item
-              a
-                | News
-
-            li.menu-item
-              a
+              = link_to('#', :class => 'item') do
                 | Contact
 
 
       .page-content
       	.wrapper
-          .notice
-      		  = notice
-          .alert
-      		  = alert
-          = yield
+          .wrapper-content
+            - unless notice.blank?
+              .notice
+          		  = notice
+            - unless alert.blank?
+              .alert
+          		  = alert
+            = yield
 
 
       .footer
         .wrapper
           .footer-address
             .footer-address-logo
-              a> href =home_index_path()
+              = link_to(root_path, :class => 'item') do
                 = image_tag 'logo.png'
             .footer-address-content
               p

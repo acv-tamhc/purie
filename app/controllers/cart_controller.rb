@@ -3,9 +3,6 @@ class CartController < ApplicationController
 	def cart
 		@page_title = 'Cart'
 		session[:cart] = Hash.new if session[:cart].nil?
-		session[:cart].delete(33)
-		puts "session cart"
-		puts session[:cart]
 		unless params[:order_detail].nil?
 			@result = Hash.new
 			@result["status"] = false

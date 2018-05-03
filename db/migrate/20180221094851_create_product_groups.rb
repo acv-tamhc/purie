@@ -3,7 +3,6 @@ class CreateProductGroups < ActiveRecord::Migration[5.1]
     create_table :product_groups do |t|
       t.integer 	:group_id
       t.string 		:group_nav
-      
       t.string    :parent_id
       t.string		:picture
       t.string		:title

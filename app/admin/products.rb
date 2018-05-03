@@ -1,3 +1,3 @@
 ActiveAdmin.register Product do
-	permit_params :title
+  permit_params :title
 end

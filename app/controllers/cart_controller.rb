@@ -19,7 +19,7 @@ class CartController < ApplicationController
 			else
 				@order_detail = session[:cart][params[:order_detail][:product_id]]
 				
-				if params[:remove_cart].nil?
+				if params[:remove_cart].empty?
 					if params[:order_detail]['quantity'].nil?
 						@order_detail['quantity'] = @order_detail['quantity'].to_f + 1
 					else
@@ -36,6 +36,8 @@ class CartController < ApplicationController
 					session[:cart][params[:order_detail][:product_id]] = nil
 					@result["refresh"] = 1
 				end
+				@result["data"] = params
+				@result["data_all"] = session[:cart]
 				@result["status"] = true
 				@result["message"] = "Add to cart successful"
 			end

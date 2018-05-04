@@ -3,7 +3,7 @@
 		h1
 			| #{@page_title}
 	.page-cart-content
-		= simple_form_for(@order , :url => cart_address_path, :html => { :class => 'form_cart_address'}) do |f|
+		= simple_form_for(@order , :url => carts_path, :html => { :class => 'form_cart_address'}) do |f|
 			- if @order.errors.any?
 				#error_explanation
 				h2 = "#{pluralize(@order.errors.count, "error")} prohibited this photo from being saved:"

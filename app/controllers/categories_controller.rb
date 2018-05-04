@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
 	before_action :set_category, only: [:show]
-  def show
-  	@categories = Category.includes(:product).all if @category.blank?
+  def index
+    @categories = Category.includes(:product).all if @category.blank?
     unless @categories.nil?
       @order_detail = Hash.new
       @categories.each { |c|
@@ -14,6 +14,9 @@ class CategoriesController < ApplicationController
         }
       }
     end
+  end
+
+  def show
   end
   private 
   def set_category

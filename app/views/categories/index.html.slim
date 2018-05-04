@@ -1,0 +1,31 @@
+.page-category
+	.page-title 
+		- unless @category.nil?
+			| #{@category.title}
+		- else
+			| All products
+
+	.page-category-content
+		.box-list-category
+			- unless @categories.nil?
+				.box-category
+				- @categories.each do |category|
+					.box-title
+					 h3.category-title #{category.title}
+					- unless category.product.empty?
+						.list-products.list-scroll
+							- category.product.each do |product|
+								.item
+									= link_to(product_detail_path(product.id), :class => 'img') do
+										.img
+											= image_tag(product.picture)
+										p.title #{product.title}
+										p.price
+											span
+												| Price: 
+											span.focus
+												| #{product.price}
+										= simple_form_for(@order_detail[category.id][product.id], :url => cart_path, :html => { :class => 'form_add_cart', 'onsubmit' => 'return false'}) do |f|
+											= f.input :quantity, input_html: { class: 'quantity', value: '1', min: 1, type: 'hidden'}
+											= f.input :product_id, input_html: { type: 'hidden' }
+											= f.button :submit, "Add cart", class: "add_cart btn"

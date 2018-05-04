@@ -43,20 +43,20 @@ html
               = link_to(root_path, :class => 'item') do
                 | Home
             li.menu-item
-              = link_to(category_detail_path(10), :class => 'item') do
+              = link_to(category_path(10), :class => 'item') do
                 | Node
             li.menu-item
-              = link_to(category_all_path, :class => 'item') do
+              = link_to(categories_path, :class => 'item') do
                 | All products
             li.menu-item
-              = link_to(category_detail_path(1), :class => 'item') do
+              = link_to(category_path(1), :class => 'item') do
                 | Ruby
             li.menu-item
-              = link_to(category_detail_path(2), :class => 'item') do
+              = link_to(category_path(2), :class => 'item') do
                 | PHP
 
             li.menu-item
-              = link_to(category_detail_path(4), :class => 'item') do
+              = link_to(category_path(4), :class => 'item') do
                 | JavaScript
 
             li.menu-item

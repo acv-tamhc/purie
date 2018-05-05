@@ -79,6 +79,5 @@ jQuery ->
 			,
 			onAuthorize: (data, actions) -> 
 				return actions.payment.execute().then ->
-					# window.alert('Payment Complete!')
 					$('.form_checkout').submit()
 		}, '#paypal-button-container')

@@ -20,7 +20,7 @@
 						- unless @cart[k].nil?
 							.list_item.list_cart_item
 								.item.item-title
-									= link_to product_detail_path(v.product.id), { :class => "link_title"} do
+									= link_to product_path(v.product.id), { :class => "link_title"} do
 										.img.mini
 											= image_tag v.product.picture
 										.title
@@ -28,7 +28,7 @@
 								.item.price
 									= v.product.price
 								.item.item-quantiy
-									= simple_form_for(@cart[k] ,namespace: k, :url => cart_path, :html => { :class => 'form_update_cart', 'onsubmit' => 'return false'}) do |f|
+									= simple_form_for(@cart[k] ,namespace: k, :url => carts_path, :html => { :class => 'form_update_cart', 'onsubmit' => 'return false'}) do |f|
 										= hidden_field_tag "update_cart", 1
 										= hidden_field_tag "remove_cart", nil
 										= f.input :quantity, input_html: { class: 'quantity', min: 1}
@@ -47,5 +47,5 @@
 							p 
 								| #{@total}
 							.checkout.button_right
-								= link_to cart_address_path, { :class => "btn btn-check-out" } do
+								= link_to new_cart_path, { :class => "btn btn-check-out" } do
 									| Check out

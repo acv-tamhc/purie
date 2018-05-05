@@ -1,7 +1,19 @@
 class CartsController < ApplicationController
 	before_action :manupopulate_cart, only: [:index, :create]
-	before_action :check_cart, only: [:address, :checkout]
+	before_action :check_cart, only: [:new, :show]
+	before_action :checkout, only: [:show, :update]
 	def create
+		if params[:order].nil?
+			render :new
+		else
+			@order = Order.new(order_params)
+			if @order.valid?
+				session[:order] = order_params
+				redirect_to cart_url('checkout')
+			else
+				render :new
+			end
+		end
 	end
 	def index
 		@page_title = 'Cart'
@@ -19,33 +31,28 @@ class CartsController < ApplicationController
 		end
 		session[:cart_total] = @total
 	end
-	def address 
-		@page_title = "Address"
+	
+	def new 
+		@page_title = 'Address'
 		@order = Order.new
-		unless params[:order].nil?
-			@order = Order.new(order_params)
-			if @order.valid?
-				session[:order] = order_params
-				redirect_to cart_checkout_url
-			end
-		end
 	end
-	def checkout
-		@page_title = "Checkout"
-		cart = session[:cart]
-		@cart = Hash.new
-		cart.each { |k, v|
-			@cart[k] = self.get_order_detail(o)
-		}
-		order = session[:order]
-		@order = Order.new
-		@order.email = order["email"]
-		@order.phone = order["phone"]
-		@order.address = order["address"]
-		@order.description = order["description"]
-		@order.total = session[:cart_total]
 
-		unless params[:update_checkout].nil?
+	def show
+		@page_title = 'Checkout'
+		
+	end
+
+	def update
+		if  params[:update_checkout].nil?
+			render :show
+		else
+			cart = session[:cart]
+			@cart = Hash.new
+			cart.each { |k, v|
+				unless cart[k].nil?
+					@cart[k] = self.get_order_detail(cart[k])
+				end
+			}
 			if @order.save
 				@cart.each { |k, v|
 					item = @cart[k]
@@ -58,8 +65,18 @@ class CartsController < ApplicationController
 				redirect_to root_url
 			end
 		end
-
 	end
+
+	def checkout
+		order = session[:order]
+		@order = Order.new
+		@order.email = order["email"]
+		@order.phone = order["phone"]
+		@order.address = order["address"]
+		@order.description = order["description"]
+		@order.total = session[:cart_total]
+	end
+
 	def get_order_detail(order_detail)
 		@order_detail = OrderDetail.new
 		@order_detail.product_id = order_detail["product_id"]

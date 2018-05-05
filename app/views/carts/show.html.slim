@@ -5,7 +5,7 @@
 	.page-cart-content
 		.checkout
 			.checkout-info
-				= simple_form_for(@order , :url => cart_checkout_path, :html => { :class => 'form_checkout'}) do |f|
+				= simple_form_for(@order,  :url => cart_path('checkout'), :method => 'put', :html => { :class => 'form_checkout'}) do |f|
 					.list_item.list_checkout
 						.item
 							span
